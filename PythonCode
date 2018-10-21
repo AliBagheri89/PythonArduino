@@ -1,0 +1,13 @@
+import serial                             //import pyserial package
+
+arduino = serial.Serial('COM5', 9600)     //introduce arduino port and baudrate
+t = 0                                     //initialize the time
+file = open("data.txt", 'w')              //open a text file
+while t < 15:                             //the horizon to save data
+    data = arduino.readline()             //read data from arduino
+    print(data)                           //print data on python consol
+    data = str(data)                      //change data to the carachter format
+    file.write(data+"\n")                 // write data in the text file
+    t +=1                                 //ready forthe next time-step
+
+file.close()                              //close the file
